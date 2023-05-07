@@ -1,0 +1,188 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo&display=swap');
+
+
+
+:root{
+    --var-font:'Cairo',sans-serif;
+    --var-primary-color:#14ACD4;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+.body {
+    z-index: 2;
+    width: 100%;
+    position: fixed;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 1fr 5fr 1fr;
+    backdrop-filter: blur(17px);
+
+    background-color: #cfcbcb2a;
+}
+
+
+.body > h1 {
+    font-family: var(--var-font);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--var-primary-color);
+    font-size: 4rem;
+    filter: drop-shadow(0px 3px 21px #14ACD490);
+}
+
+.body footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer a {
+    text-decoration: none;
+}
+
+
+.cover {
+    z-index: 1;
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cover span {
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+}
+
+.cover .b {
+    mix-blend-mode: multiply;
+    background-color: rgba(0, 0, 255, 0.226);
+    transform: translateX(100px);
+    box-shadow: 0px 21px rgba(0, 0, 255, 0.226);
+}   
+.cover .r {
+    mix-blend-mode: multiply;
+    transform: translateX(-100px);
+    background-color: rgba(255, 0, 0, 0.226);
+    box-shadow: 0px 21px rgba(255, 0, 0, 0.226);
+}
+
+
+
+footer {
+    padding: 1rem;
+}
+footer a {
+    background-color: #fff;
+    width: 400px;
+    height: 80px;
+    padding: 1rem 1.8rem;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--var-font);
+    font-weight: bold;
+    color: #14ACD4;
+    box-shadow: 0px 3px 21px #fff;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.center{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.center div {
+    width: 350px;
+    height: 300px;
+    background-color: #F5F5F569;
+    box-shadow: 0px 3px 21px #00000030;
+}
+
+
+.center .r {
+    display: flex;
+    padding: 1rem;
+}
+
+.center .r textarea {
+    flex: 1;
+    font-family: var(--var-font);
+    border: none;
+    outline: none;
+    background-color: transparent;
+    direction: rtl;
+    resize: none;
+    font-size: 25px;    
+}
+
+
+.center .l {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 20px;
+    position: relative;
+}
+
+.center .l select {
+    direction: rtl;
+    padding: 0.5rem .5rem;
+    border: none;
+    color: #666;
+    font-family: var(--var-font);
+    outline: none;
+    background-color: #f6f6f6;
+}
+
+.center .l textarea {
+    flex: 2;
+    resize: none;
+    font-family: var(--var-font);
+    border: none;
+    outline: none;
+    background-color: #bbbbbb52;
+    direction: rtl;
+    font-size: 25px;
+    
+}
+
+
+.center .l button {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    background-color: #fff;
+    font-family: var(--var-font);
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    bottom: 30px;
+    left: 30px;
+    color: var(--var-primary-color);
+    box-shadow: 0px 3px 21px #14ACD430;
+    cursor: pointer;
+    opacity: 0;
+    transition: all 0.6s ease;
+}
+
+.center .l:hover button {
+    opacity: 1;
+}

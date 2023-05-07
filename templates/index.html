@@ -1,0 +1,99 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ترجملي</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+</head>
+<body>
+
+    <div class="body">
+
+        <h1>ترجملي</h1>
+    
+        <div class="center">
+            
+            <div class="l">
+                <select name="" id="">
+                    <option  value="#" selected>اختر اللغة</option>
+                    {% for lang in langs %}
+                        <option value="{{ lang }}">{{ lang }}</option>
+                    {% endfor %}
+                </select>
+                <textarea readonly name="" id="" cols="30" rows="10"></textarea>
+                <button id="copy">نسخ</button>
+            </div>
+
+            <div class="r">
+                <textarea name="keyword" id="keyword" cols="30" rows="10" placeholder="ادخل النص"></textarea>
+            </div>
+
+        </div>
+        
+        <footer>
+            
+            <a href="https://www.facebook.com/radwan.gaber.hijazi/" target="_blank">
+                <p>تم البناء و التطوير بواسطة : رضوان جابر حجازي</p>
+            </a>
+            
+        </footer>
+    </div>
+
+    <div class="cover">
+        <span class="b"></span>
+        <span class="r"></span>
+    </div>
+
+
+
+    <script>
+
+        var inputText = document.getElementById('keyword');
+        var language = document.querySelector('select')
+        var outPut = document.querySelector('.l textarea')
+        
+
+
+        // send tranlsate request
+        inputText.addEventListener('input',function(){
+           
+            var keyword = this.value;
+            var lang = language.value ;
+            
+            if ( lang == '#'){
+                alert('اختر اللغة اولا')
+                this.value = ''
+            }
+            else{
+                $.ajax({
+                    url:"{% url 'translate' %}",
+                    method:'GET',
+                    data:{
+                        'keyword':keyword,
+                        'language':lang,
+                    },
+                    success:function(response){
+                        outPut.textContent = response;
+                    }
+                })
+            }
+       
+        })
+
+
+        // Copy Translated Text
+        document.getElementById('copy').addEventListener('click',function(){
+            document.querySelector('.l textarea').select();
+            document.execCommand('copy')
+        })
+                
+
+    </script>
+
+</body>
+</html>
